@@ -49,6 +49,21 @@ let messages = [];
 /* Cria a conexão com o socket.io */
 io.on('connection', socket => {
     console.log('Novo usuário conectado! | ID: ' + socket.id);
+
+    /* Recuperar e manter as mensagens do front para o back: */
+    socket.emit('previousMessage', messages);
+
+    /* Dispara ações quando recebe as mensagens do frontend */
+    socket.on('sendMessage', data=>{
+
+        /* Adiciona a nova mensagem no final do array "messages" */
+        messages.push(data);
+
+        /* Propaga a mensagem para totos os usuários conectados */
+        socket.broadcast.emit('receivedMessage', data)
+
+    });
+
 });
 
 /* FIM DO CÓDIGO DO CHAT */
