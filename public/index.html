@@ -74,11 +74,11 @@
                 event.preventDefault();
 
                 /* Recupera os valores dos campos do formulário: */
-                var author = $('input[name=username]').val();
+                var usuario = $('input[name=username]').val();
                 var message = $('input[name=message]').val();
 
                 /* Verfica se o usuário preencheu todos os campos: */
-                if (author.length && message.length) {
+                if (usuario.length && message.length) {
 
                     /* Cria um objeto javascript para recuperar a data e a hora do envio da mensagem: */
                     let data_hora_obj = new Date();
@@ -89,7 +89,7 @@
 
                     /* Monta o objeto JSON para enviar a mensagem: */
                     var messageObject = {
-                        author: author,
+                        usuario: usuario,
                         data_hora:data_hora_msg,
                         message: message,
                     };
